@@ -1,11 +1,14 @@
 "use strict";
 
+const params = new URLSearchParams(window.location.search);
+const category = params.get("category");
+
 const productContainer = document.querySelector("main");
-fetch("https://kea-alt-del.dk/t7/api/products")
+fetch(`https://kea-alt-del.dk/t7/api/products?limit=56&category=${category}`)
   .then((response) => response.json())
   .then((data) => {
     showProducts(data);
-  });
+  });   
 
 function showProducts(productsArr) {
   //   console.log("productsArr:", productsArr);
