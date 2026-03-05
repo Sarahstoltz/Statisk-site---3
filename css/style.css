@@ -38,7 +38,7 @@ header h1 span {
   color: red;
 }
 
-header nav{
+header nav {
   display: flex;
   gap: 1rem;
 }
@@ -72,10 +72,10 @@ img {
   max-width: 100%;
   height: auto;
 }
-.productlist main {
+.productlist {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 2rem;
+  gap: 4rem;
 }
 .productlist article {
   position: relative;
@@ -104,7 +104,7 @@ img {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: red;
+  /* background-color: #ff0000; */
   color: white;
   padding: 5px 10px;
   font-weight: bold;
@@ -113,10 +113,11 @@ img {
 .productlist .soldOut img {
   opacity: 0.3;
 }
-.productlist .soldOutTxt {
+.productlist .soldoutTxt {
+  color: red;
   display: none;
 }
-.productlist .soldOut .soldOutTxt {
+.productlist .soldOut .soldoutTxt {
   display: block;
 }
 .productlist .discount_element p {
