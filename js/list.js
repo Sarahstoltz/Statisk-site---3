@@ -3,7 +3,7 @@
 const params = new URLSearchParams(window.location.search);
 const category = params.get("category");
 
-const productContainer = document.querySelector("main");
+const productContainer = document.querySelector(".productlist");
 fetch(`https://kea-alt-del.dk/t7/api/products?limit=56&category=${category}`)
   .then((response) => response.json())
   .then((data) => {
@@ -11,13 +11,12 @@ fetch(`https://kea-alt-del.dk/t7/api/products?limit=56&category=${category}`)
   });   
 
 function showProducts(productsArr) {
-  //   console.log("productsArr:", productsArr);
-
+    console.log("productsArr:", productsArr);
   productsArr.forEach((product) => {
     console.log("product:", product.category);
     const hasDiscount = product.discount > 0;
-
-    productContainer.innerHTML += `<article class="${product.soldout ? "soldOut" : ""}">
+//class= "smallProduct${product.soldout ? " soldOut" : ""}
+    productContainer.innerHTML += `<article">
       ${hasDiscount ? `<span class="discount_badge">-${product.discount}%</span>` : ""}
     <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="${product.productdisplayname}">
     <p class="soldoutTxt color_me_gray">SOLD OUT</p>
@@ -25,9 +24,8 @@ function showProducts(productsArr) {
     <p>${product.articletype} - ${product.brandname}</p>
     <p>DKK ${product.price},-</p>
      <div class="discounted_element">
-        ${
-          hasDiscount
-            ? `
+        ${hasDiscount
+          ? `
           <span class="discount_badge">-${product.discount}%</span>
           <p class="discounted_price">Now DKK ${Math.round(product.price * (1 - product.discount / 100))},-</p>
         `
@@ -39,3 +37,15 @@ function showProducts(productsArr) {
     `;
   });
 }
+
+
+// if(product.soldout){
+//   console.log("product status: udsolgt");
+// }else{
+//   console.log("product status: på lager");
+// }
+
+// product.soldout
+// ? console.log("product status: udsolgt")
+// : console.log("product status: på lager");
+
